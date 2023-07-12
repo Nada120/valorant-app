@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'VALORANT APP',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        fontFamily: 'gamerBold',
       ),
       home: const HomePage(),
     );
