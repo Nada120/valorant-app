@@ -3,6 +3,7 @@ import '../constant/colors.dart';
 import '../models/characters_model.dart';
 import '../service/characters_service.dart';
 import '../widget/characters_gird.dart';
+import '../widget/custom_app_bar.dart';
 
 class CharactersPage extends StatefulWidget {
   const CharactersPage({super.key});
@@ -26,7 +27,17 @@ class _CharactersPageState extends State<CharactersPage> {
 Widget buildUI({
   required List<Character> character
 }) {
-  return CharacterGirdView(
-    character: character,
+  return Scaffold(
+    appBar: customAppBar(
+      iconColor: Colors.white,
+      iconData: Icons.search_outlined,
+      process: (){
+        // TODO Here
+      },
+    ),
+    //drawer: ,
+    body: CharacterGirdView(
+      character: character,
+    ),
   );
 }
