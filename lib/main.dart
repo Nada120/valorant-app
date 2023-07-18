@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_app/screens/home_page.dart';
+import 'package:valorant_app/widget/characters_gird.dart';
 
 void main() {
   runApp(const MyApp());
