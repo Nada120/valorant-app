@@ -22,13 +22,10 @@ class CustoBmutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton.icon(
-        style: ButtonStyle(
-          padding: MaterialStateProperty.resolveWith(
-            (states) =>
-                const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-          ),
-          backgroundColor:
-              MaterialStateProperty.resolveWith((states) => backgroundColor),
+        style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          backgroundColor: backgroundColor,
+          maximumSize: const Size(180, 50),
         ),
         onPressed: process,
         icon: Icon(

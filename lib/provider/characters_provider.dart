@@ -7,10 +7,19 @@ import '../widget/custom_loading.dart';
 
 class CharactersProvider extends ChangeNotifier {
   List<Character> characters = [];
+  
+  List<Character> get character => characters;
+  
+  set character(List<Character> ch) {
+    characters = ch;
+    notifyListeners();
+  }
 
   void fetchData() async {
     CharacterService service = CharacterService();
-    characters = await service.getCharacters();
+    List<Character> ch = await service.getCharacters();
+    characters = ch;
+    notifyListeners();
   }
 
   Widget isLoading() {
