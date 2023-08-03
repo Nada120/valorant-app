@@ -8,17 +8,16 @@ AppBar customAppBar({
 }) {
   return AppBar(
     elevation: 0,
+    iconTheme: IconThemeData(
+      size: 30,
+      color: iconColor,
+    ),
     backgroundColor: backColor,
     actions: [
-      Padding(
-        padding: const EdgeInsets.all(12),
-        child: IconButton(
-          onPressed: process,
-          icon: Icon(
-            iconData,
-            color: iconColor,
-            size: 35,
-          ),
+      IconButton(
+        onPressed: process,
+        icon: Icon(
+          iconData,
         ),
       ),
     ],

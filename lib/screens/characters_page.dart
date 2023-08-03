@@ -13,6 +13,7 @@ import '../service/characters_service.dart';
 
 // custom widgets
 import '../widget/characters_gird.dart';
+import '../widget/custom_drawer.dart';
 import '../widget/custom_loading.dart';
 import '../widget/sticker_image.dart';
 import '../widget/custom_app_bar.dart';
@@ -76,8 +77,7 @@ Widget buildUI({
         // TODO Here
       },
     ),
-     // TODO Here
-    //drawer: ,
+    drawer: CustomDrawer(backColor: darkRed,),
     body: SingleChildScrollView(
       child: Column(
         children: [
