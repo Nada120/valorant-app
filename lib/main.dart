@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:valorant_app/screens/home_page.dart';
-
 import 'provider/characters_provider.dart';
 
 void main() {

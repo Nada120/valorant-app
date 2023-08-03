@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../constant/text.dart';
 import '../widget/background_home.dart';
 
 class HomePage extends StatefulWidget {

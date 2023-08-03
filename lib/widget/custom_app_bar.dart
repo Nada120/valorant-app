@@ -7,6 +7,7 @@ AppBar customAppBar({
   required Color backColor,
 }) {
   return AppBar(
+    elevation: 0,
     backgroundColor: backColor,
     actions: [
       Padding(
