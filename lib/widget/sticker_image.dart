@@ -5,13 +5,16 @@ class StickerImage extends StatelessWidget {
   final Color backColor;
   final Color fontColor;
   final String image;
-  
-  const StickerImage({
-    super.key, 
-    required this.backColor, 
-    required this.fontColor,
-    required this.image
-  });
+  final Color recColor;
+  final Color recColor2;
+
+  const StickerImage(
+      {super.key,
+      required this.backColor,
+      required this.fontColor,
+      required this.image,
+      required this.recColor,
+      required this.recColor2});
 
   @override
   Widget build(BuildContext context) {
@@ -19,20 +22,27 @@ class StickerImage extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       height: 300,
       color: backColor,
-      child: Stack(
-        alignment: AlignmentDirectional.centerStart,
-        children: [
-        Container(
-          width: MediaQuery.of(context).size.width*0.8,
+      child: Stack(alignment: AlignmentDirectional.centerStart, children: [
+        Positioned(
+          bottom: 100,
+          child: customCotainer(
+            context,
+            color: recColor2,
+            width: 0.6,
+            height: 80,
+          ),
+        ),
+        customCotainer(
+          context,
+          color: recColor,
+          width: 0.8,
           height: 60,
-          // TODO HERE
-          //decuration:,
         ),
         Positioned(
-          left: MediaQuery.of(context).size.width*0.4,
+          left: MediaQuery.of(context).size.width * 0.4,
           child: Image.asset(
             image,
-            width: MediaQuery.of(context).size.width*0.6,
+            width: MediaQuery.of(context).size.width * 0.6,
             height: 220,
             fit: BoxFit.contain,
           ),
@@ -59,6 +69,24 @@ class StickerImage extends StatelessWidget {
           ),
         ),
       ]),
+    );
+  }
+
+  Widget customCotainer(context,
+      {required double width, required double height, required Color color}) {
+    return Container(
+      width: MediaQuery.of(context).size.width * width,
+      height: height,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            color,
+            color.withOpacity(0.3),
+          ],
+          end: Alignment.bottomLeft,
+          begin: Alignment.topRight,
+        ),
+      ),
     );
   }
 }

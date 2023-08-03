@@ -85,6 +85,8 @@ Widget buildUI({
             image: 'assets/images/ch1.png',
             backColor: darkGray,
             fontColor: Colors.white,
+            recColor: brightRed,
+            recColor2: teal,
           ),
           CharacterGirdView(character: character),
         ],
