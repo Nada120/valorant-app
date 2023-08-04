@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'custom_date_picker.dart';
+import 'custom_navigator.dart';
 
 class CustomDrawer extends StatelessWidget {
   final Color backColor;
@@ -31,18 +33,22 @@ class CustomDrawer extends StatelessWidget {
           customListTile(
             title: 'SETTING',
             icon: Icons.settings,
+            process: (){} //pushPage(context, settingPage()),
           ),
           customListTile(
             title: 'CALENDAR',
             icon: Icons.edit_calendar,
+            process: () async => await customDatePicker(context),
           ),
           customListTile(
             title: 'FAVORITE',
             icon: Icons.favorite,
+            process: () {} //pushPage(context, favoritePage()), 
           ),
           customListTile(
             title: 'EVENT',
             icon: Icons.celebration,
+            process: () {} //pushPage(context, eventPage()),
           ),
           const Spacer(
             flex: 3,
@@ -50,6 +56,7 @@ class CustomDrawer extends StatelessWidget {
           customListTile(
             title: 'OUT',
             icon: Icons.logout,
+            process: () => popPage(context),
           ),
           const Spacer(
             flex: 1,
@@ -62,10 +69,12 @@ class CustomDrawer extends StatelessWidget {
   Widget customListTile({
     required String title,
     required IconData icon,
+    required void Function() process
   }) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4),
       child: ListTile(
+        onTap: process,
         title: Text(
           title,
           style: const TextStyle(

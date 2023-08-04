@@ -16,13 +16,10 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CharactersProvider()),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'VALORANT APP',
-        theme: ThemeData(
-          fontFamily: 'gamerBold',
-        ),
-        home: const HomePage(),
+        home: HomePage(),
       ),
     );
   }

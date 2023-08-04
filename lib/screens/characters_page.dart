@@ -27,17 +27,15 @@ class CharactersPage extends StatefulWidget {
 }
 
 class _CharactersPageState extends State<CharactersPage> {
-  
-  
   CharacterService service = CharacterService();
-  late Future<List<Character>> characters =  service.getCharacters();
+  late Future<List<Character>> characters = service.getCharacters();
 
   @override
   Widget build(BuildContext context) {
     //final provider = Provider.of<CharactersProvider>(context);
     //provider.fetchData();
     // return provider.characters.isEmpty
-    // ? provider.isLoading() 
+    // ? provider.isLoading()
     // : buildUI(
     //     character: provider.characters,
     //   );
@@ -48,16 +46,12 @@ class _CharactersPageState extends State<CharactersPage> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return CustomLoading(
             size: 20,
-            colors: [
-              darkRed,
-              teal,
-              brightRed
-            ],
+            colors: [darkRed, teal, brightRed],
           );
         } else if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasData) {
             return buildUI(character: snapshot.data!);
-          } 
+          }
         }
         return const ShowError();
       },
@@ -65,31 +59,62 @@ class _CharactersPageState extends State<CharactersPage> {
   }
 }
 
-Widget buildUI({
-  required List<Character> character
-}) {
-  return Scaffold(
-    appBar: customAppBar(
-      iconColor: Colors.white,
-      iconData: Icons.search_outlined,
-      backColor: darkGray,
-      process: (){
-        // TODO Here
-      },
-    ),
-    drawer: CustomDrawer(backColor: darkRed,),
-    body: SingleChildScrollView(
-      child: Column(
-        children: [
-          StickerImage(
-            image: 'assets/images/ch1.png',
-            backColor: darkGray,
-            fontColor: Colors.white,
-            recColor: brightRed,
-            recColor2: teal,
-          ),
-          CharacterGirdView(character: character),
-        ],
+TabBar get customTabBar => TabBar(
+      indicatorColor: brightRed,
+      labelColor: brightRed,
+      unselectedLabelColor: Colors.white,
+      tabs: const [
+        Tab(
+          text: 'Charecters',
+          icon: Icon(Icons.groups_3),
+        ),
+        Tab(
+          text: 'Weapon',
+          icon: Icon(Icons.handyman),
+        ),
+      ],
+    );
+
+Widget buildUI({required List<Character> character}) {
+  return DefaultTabController(
+    length: 2,
+    child: Scaffold(
+      appBar: customAppBar(
+        iconColor: Colors.white,
+        iconData: Icons.search_outlined,
+        backColor: darkGray,
+        process: () {
+          // TODO Here
+        },
+      ),
+      drawer: CustomDrawer(
+        backColor: darkRed,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            StickerImage(
+              image: 'assets/images/ch1.png',
+              backColor: darkGray,
+              fontColor: Colors.white,
+              recColor: brightRed,
+              recColor2: teal,
+            ),
+            PreferredSize(
+              preferredSize: customTabBar.preferredSize,
+              child: ColoredBox(
+                color: darkGray,
+                child: customTabBar,
+              ),
+            ),
+            TabBarView(
+              children: [
+                CharacterGirdView(character: character),
+                // TODO HERE
+              ],
+            ),
+          ],
+        ),
       ),
     ),
   );
