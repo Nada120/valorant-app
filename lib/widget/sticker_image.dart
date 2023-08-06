@@ -56,10 +56,11 @@ class StickerImage extends StatelessWidget {
             style: TextStyle(
               fontSize: 40,
               color: fontColor,
+              fontFamily: 'gamerBold',
               fontWeight: FontWeight.w700,
             ),
             child: AnimatedTextKit(
-              totalRepeatCount: 100,
+              repeatForever: true,
               animatedTexts: [
                 RotateAnimatedText('BE STRONG'),
                 RotateAnimatedText('GAIN MORE POWER'),

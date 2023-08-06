@@ -4,6 +4,7 @@ import '../constant/text.dart';
 import '../screens/characters_page.dart';
 import '../widget/animated_text.dart';
 import '../widget/custom_button.dart';
+import 'custom_navigator.dart';
 
 class BackgroundHome extends StatelessWidget {
   final String imagePath;
@@ -45,12 +46,9 @@ class BackgroundHome extends StatelessWidget {
             backgroundColor: brightRed,
             icon: Icons.gps_fixed_outlined,
             process: (){
-              Navigator.pushAndRemoveUntil(
+              pushRemovePage(
                 context, 
-                MaterialPageRoute(
-                  builder: (context)=> const CharactersPage(),
-                ), 
-                (route) => false,
+                const CharactersPage(),
               );
             },
           ),

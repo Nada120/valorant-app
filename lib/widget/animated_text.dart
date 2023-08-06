@@ -16,6 +16,7 @@ class AnimatedTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
         child: AnimatedTextKit(
+          repeatForever: true,
           animatedTexts: allAnimatedText(),
         ),
       );

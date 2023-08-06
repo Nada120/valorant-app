@@ -26,9 +26,23 @@ class CharactersPage extends StatefulWidget {
   State<CharactersPage> createState() => _CharactersPageState();
 }
 
-class _CharactersPageState extends State<CharactersPage> {
+class _CharactersPageState extends State<CharactersPage> with TickerProviderStateMixin {
   CharacterService service = CharacterService();
   late Future<List<Character>> characters = service.getCharacters();
+  late TabController _tabController;
+  int indexPage = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,25 +71,9 @@ class _CharactersPageState extends State<CharactersPage> {
       },
     );
   }
-}
 
-TabBar get customTabBar => TabBar(
-      indicatorColor: brightRed,
-      labelColor: brightRed,
-      unselectedLabelColor: Colors.white,
-      tabs: const [
-        Tab(
-          text: 'Charecters',
-          icon: Icon(Icons.groups_3),
-        ),
-        Tab(
-          text: 'Weapon',
-          icon: Icon(Icons.handyman),
-        ),
-      ],
-    );
-
-Widget buildUI({required List<Character> character}) {
+  
+buildUI({required List<Character> character}) {
   return DefaultTabController(
     length: 2,
     child: Scaffold(
@@ -92,6 +90,7 @@ Widget buildUI({required List<Character> character}) {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             StickerImage(
               image: 'assets/images/ch1.png',
@@ -100,22 +99,47 @@ Widget buildUI({required List<Character> character}) {
               recColor: brightRed,
               recColor2: teal,
             ),
-            PreferredSize(
-              preferredSize: customTabBar.preferredSize,
+            SizedBox(
+              height: 100,
+              width: double.maxFinite,
               child: ColoredBox(
                 color: darkGray,
                 child: customTabBar,
               ),
             ),
-            TabBarView(
-              children: [
-                CharacterGirdView(character: character),
-                // TODO HERE
-              ],
-            ),
+            indexPage == 0
+            ? CharacterGirdView(character: character)
+            : // TODO HERE ADD PAGE 2 
+            const Center(
+                  child: Text('Page 2'),
+                ),
           ],
         ),
       ),
     ),
   );
 }
+
+TabBar get customTabBar => TabBar(
+  controller: _tabController,
+  indicatorColor: brightRed,
+  labelColor: brightRed,
+  unselectedLabelColor: Colors.white,
+  onTap: (index) {
+    setState(() {
+      indexPage = index;
+    });
+  },
+  tabs: const [
+    Tab(
+      text: 'Charecters',
+      icon: Icon(Icons.groups_3),
+    ),
+    Tab(
+      text: 'Weapon',
+      icon: Icon(Icons.handyman),
+    ),
+  ],
+);
+}
+
