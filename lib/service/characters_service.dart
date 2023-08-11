@@ -13,7 +13,14 @@ class CharacterService {
       Map<String, dynamic> body = jsonDecode(response.body);
       List<dynamic> data = body["data"];
 
-      List<Character> characters = data.map((dynamic item)=> Character.fromJson(item)).toList();
+      List<Character> allData = data.map((dynamic item) => Character.fromJson(item)).toList();
+      List<Character> characters = [];
+      
+      for (var item in allData) {
+        if (item.fullPortrait != null) {
+          characters.add(item);
+        }
+      }
       // OR
       // for(int i=0; i<data.length; i++) {
       //   characters.add(Character.fromJson(data[i]));

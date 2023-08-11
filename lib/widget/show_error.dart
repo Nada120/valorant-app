@@ -7,7 +7,7 @@ class ShowError extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        'assets/images/error.gif',
+        'assets/images/error.png',
       ),
     );
   }

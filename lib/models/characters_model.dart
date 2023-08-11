@@ -5,6 +5,7 @@ class Character {
   final String? fullPortrait;
   final dynamic backgroundGradientColors;
   final dynamic abilities;
+  bool isFavorite; 
 
   Character({
     required this.name,
@@ -12,6 +13,7 @@ class Character {
     required this.fullPortrait,
     required this.backgroundGradientColors,
     required this.abilities,
+    this.isFavorite = false
   });
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(
