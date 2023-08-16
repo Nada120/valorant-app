@@ -3,15 +3,13 @@ class Character {
   final String? name;
   final String? description;
   final String? fullPortrait;
-  final dynamic backgroundGradientColors;
-  final dynamic abilities;
+  final List<dynamic> abilities;
   bool isFavorite; 
 
   Character({
     required this.name,
     required this.description,
     required this.fullPortrait,
-    required this.backgroundGradientColors,
     required this.abilities,
     this.isFavorite = false
   });
@@ -20,7 +18,6 @@ class Character {
     name: json['displayName'], 
     description: json['description'], 
     fullPortrait: json['fullPortrait'], 
-    backgroundGradientColors: json['backgroundGradientColors'],  
     abilities: json['abilities'],
   );
 

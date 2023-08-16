@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CustoBmutton extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String text;
   final Color textColor;
   final Color backgroundColor;
@@ -8,7 +8,7 @@ class CustoBmutton extends StatelessWidget {
   final Color iconColor;
   final Function()? process;
 
-  const CustoBmutton({
+  const CustomButton({
     super.key,
     required this.text,
     this.textColor = Colors.white,

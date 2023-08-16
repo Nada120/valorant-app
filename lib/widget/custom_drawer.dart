@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:valorant_app/screens/favorite_page.dart';
 import 'custom_date_picker.dart';
 import 'custom_navigator.dart';
 
@@ -43,7 +44,9 @@ class CustomDrawer extends StatelessWidget {
           customListTile(
             title: 'FAVORITE',
             icon: Icons.favorite,
-            process: () {} //pushPage(context, favoritePage()), 
+            process: () {
+              pushPage(context, const FavoritePage());
+            }
           ),
           customListTile(
             title: 'EVENT',

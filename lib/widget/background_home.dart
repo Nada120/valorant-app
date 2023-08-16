@@ -41,7 +41,7 @@ class BackgroundHome extends StatelessWidget {
             text: titles,
           ),
           const Spacer(flex: 4,),
-          CustoBmutton(
+          CustomButton(
             text: 'START',
             backgroundColor: brightRed,
             icon: Icons.gps_fixed_outlined,

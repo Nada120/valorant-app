@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constant/colors.dart';
 import '../models/characters_model.dart';
 import '../service/character_favorite.dart';
+import 'character_details.dart';
 
 class CharacterGirdView extends StatefulWidget {
   final List<Character> character;
@@ -59,13 +60,8 @@ class _CharacterGirdViewState extends State<CharacterGirdView> {
       child: Stack(
         alignment: AlignmentDirectional.bottomCenter,
         children: [
-          widget.character[index].fullPortrait != null
-          ? Image.network(
+          Image.network(
             widget.character[index].fullPortrait!, 
-            height: 400,
-          )
-          : Image.asset(
-            'assets/images/error.png',
             height: 400,
           ),
           Positioned(
@@ -90,7 +86,12 @@ class _CharacterGirdViewState extends State<CharacterGirdView> {
           ),
           InkWell(
             onTap: () {
-              // TODO SHOW DATA HERE
+              showBottomSheet(
+                context: context, 
+                builder: (_) => CharacterDetails(
+                  character: widget.character[index],
+                ),
+              );
             },
             child: Container(
               height: 40,
@@ -108,7 +109,7 @@ class _CharacterGirdViewState extends State<CharacterGirdView> {
               ),
               child: Center(
                 child: Text(
-                  widget.character[index].name ?? 'none',
+                  widget.character[index].name!,
                   style: const TextStyle(
                     fontFamily: 'gamerBold',
                     fontWeight: FontWeight.w500,
