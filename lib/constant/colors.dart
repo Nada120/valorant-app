@@ -5,3 +5,4 @@ Color brightRed2 = const Color(0xffac3b58);
 Color teal = const Color(0xff225556);
 Color darkRed = const Color(0xff78182b);
 Color darkGray = const Color(0xff121921);
+Color gray = const Color(0xffb4bfcc);

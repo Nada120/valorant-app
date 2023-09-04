@@ -6,9 +6,8 @@ import '../service/characters_service.dart';
 import '../widget/custom_loading.dart';
 
 class CharactersProvider extends ChangeNotifier {
-  List<Character> characters = [];
-  
-  List<Character> get character => characters;
+  List<Character> characters = [];  
+  //List<Character> get character => characters;
   
   set character(List<Character> ch) {
     characters = ch;

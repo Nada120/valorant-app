@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart';
-//import '../provider/characters_provider.dart';
+import 'package:provider/provider.dart';
+import '../provider/characters_provider.dart';
 
 // constant
 import '../constant/colors.dart';
@@ -46,8 +46,8 @@ class _CharactersPageState extends State<CharactersPage> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
-    //final provider = Provider.of<CharactersProvider>(context);
-    //provider.fetchData();
+    final provider = Provider.of<CharactersProvider>(context);
+    provider.fetchData();
     // return provider.characters.isEmpty
     // ? provider.isLoading()
     // : buildUI(
