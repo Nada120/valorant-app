@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_app/widget/custom_button.dart';
-import 'package:valorant_app/widget/custom_navigator.dart';
-import '../constant/colors.dart';
-import '../models/characters_model.dart';
+import '../global/custom_button.dart';
+import '../global/custom_navigator.dart';
+import '../../constant/colors.dart';
+import '../../models/characters_model.dart';
+import 'custom_text_details.dart';
 
 class CharacterDetails extends StatefulWidget {
   final Character character;
@@ -32,8 +33,9 @@ class _CharacterDetailsState extends State<CharacterDetails> {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Container(
-      height: width * 0.76,
+      height: height * 0.6,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         boxShadow: [
@@ -84,6 +86,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           const Spacer(),
           CustomButton(
             text: 'BACK', 
+            textSize: 16,
             backgroundColor: brightRed, 
             icon: Icons.arrow_circle_left, 
             process: () => popPage(context),
@@ -96,37 +99,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
     );
   }
 
-  Widget setTitle({
-    required String title,
-    double fontSize = 17,
-    FontWeight fontWeight = FontWeight.w800,
-    Color fontColor = Colors.black,
-  }) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        color: fontColor,
-      ),
-    );
-  }
-
-  Widget setData({
-    required String text,
-    required double width,
-  }) {
-    return SizedBox(
-      width: width,
-      child: Text(
-        text,
-        style: const TextStyle(
-          fontSize: 14,
-        ),
-      ),
-    );
-  }
-  
+  // TODO remove this and add custom_icon_button 
   Widget setIconAbilities() {
     final abilities = widget.character.abilities;
     return SizedBox(
@@ -160,35 +133,5 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       ),
     );
   }
-
-  Widget setAbilities({
-    required String title,
-    required String description,
-    required double width,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
-          children: [
-            setTitle(
-              title: 'Name: ',
-              fontSize: 14,
-            ),
-            setTitle(
-              title: title,
-              fontColor: brightRed,
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-            ),
-          ],
-        ),
-        setData(
-          text: description,
-          width: width,
-        ),
-      ],
-    );
-  }
+  // _________________________________________________
 }

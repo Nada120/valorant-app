@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:valorant_app/screens/home_page.dart';
-import 'provider/characters_provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'logic/cubit/favorites_cubit.dart';
+import 'logic/cubit/tab_controller_cubit.dart';
+import 'logic/cubit/characters_cubit.dart';
+import 'logic/cubit/view_favorites_cubit.dart';
+import 'screens/characters_page.dart';
+import 'screens/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +16,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
+    return MultiBlocProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => CharactersProvider()),
+        BlocProvider.value(
+          value: CharactersCubit()..getAllCharacters(),
+          child: const CharactersPage(),
+        ),
+        BlocProvider(
+          create: (context) => FavoritesCubit()..showFavorites(), 
+        ),
+        BlocProvider(
+          create: (context) => TabControllerCubit(),
+        ), 
+        BlocProvider(
+          create: (context) => ViewFavoritesCubit(),
+        ),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

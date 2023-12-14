@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:valorant_app/constant/colors.dart';
 import '../models/characters_model.dart';
 import '../service/characters_service.dart';
-import '../widget/custom_loading.dart';
+import '../widget/global/custom_loading.dart';
 
 class CharactersProvider extends ChangeNotifier {
   List<Character> characters = [];  

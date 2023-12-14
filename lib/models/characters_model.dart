@@ -4,14 +4,14 @@ class Character {
   final String? description;
   final String? fullPortrait;
   final List<dynamic> abilities;
-  bool isFavorite; 
+  String isFavorite; 
 
   Character({
     required this.name,
     required this.description,
     required this.fullPortrait,
     required this.abilities,
-    this.isFavorite = false
+    this.isFavorite = 'false'
   });
 
   factory Character.fromJson(Map<String, dynamic> json) => Character(

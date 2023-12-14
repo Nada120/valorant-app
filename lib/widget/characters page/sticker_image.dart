@@ -73,8 +73,12 @@ class StickerImage extends StatelessWidget {
     );
   }
 
-  Widget customCotainer(context,
-      {required double width, required double height, required Color color}) {
+  Widget customCotainer(
+    context, {
+      required double width, 
+      required double height, 
+      required Color color,
+    }) {
     return Container(
       width: MediaQuery.of(context).size.width * width,
       height: height,

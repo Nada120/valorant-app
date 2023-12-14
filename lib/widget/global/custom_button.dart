@@ -5,6 +5,7 @@ class CustomButton extends StatelessWidget {
   final Color textColor;
   final Color backgroundColor;
   final IconData icon;
+  final double textSize;
   final Color iconColor;
   final Function()? process;
 
@@ -16,6 +17,7 @@ class CustomButton extends StatelessWidget {
     required this.icon,
     this.iconColor = Colors.white,
     required this.process,
+    this.textSize = 24,
   });
 
   @override
@@ -23,7 +25,7 @@ class CustomButton extends StatelessWidget {
     return Center(
       child: ElevatedButton.icon(
         style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 4),
           backgroundColor: backgroundColor,
           maximumSize: const Size(180, 50),
         ),
@@ -37,7 +39,7 @@ class CustomButton extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'gamerBold',
             color: textColor,
-            fontSize: 24,
+            fontSize: textSize,
             fontWeight: FontWeight.w600,
           ),
         ),

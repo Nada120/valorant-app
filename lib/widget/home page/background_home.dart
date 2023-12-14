@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../constant/colors.dart';
-import '../constant/text.dart';
-import '../screens/characters_page.dart';
-import '../widget/animated_text.dart';
-import '../widget/custom_button.dart';
-import 'custom_navigator.dart';
+import '../../constant/colors.dart';
+import '../../constant/text.dart';
+import '../../screens/characters_page.dart';
+import 'animated_text.dart';
+import '../global/custom_button.dart';
+import '../global/custom_navigator.dart';
 
 class BackgroundHome extends StatelessWidget {
   final String imagePath;
