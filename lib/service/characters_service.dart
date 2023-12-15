@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:valorant_app/models/characters_model.dart';
+import '../models/characters_model.dart';
 import '../constant/baseurl.dart';
 
 class CharacterService {
