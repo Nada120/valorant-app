@@ -3,32 +3,16 @@ import '../global/custom_button.dart';
 import '../global/custom_navigator.dart';
 import '../../constant/colors.dart';
 import '../../models/characters_model.dart';
+import 'custom_icons_abilities.dart';
 import 'custom_text_details.dart';
 
-class CharacterDetails extends StatefulWidget {
+class CharacterDetails extends StatelessWidget {
   final Character character;
 
   const CharacterDetails({
     super.key,
     required this.character,
   });
-
-  @override
-  State<CharacterDetails> createState() => _CharacterDetailsState();
-}
-
-class _CharacterDetailsState extends State<CharacterDetails> {
-  String selectedAbilityName = '';
-  String selectedAbilityDescription = '';
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      selectedAbilityDescription = widget.character.abilities[0]['description'];
-      selectedAbilityName = widget.character.abilities[0]['displayName']; 
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +41,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           ),
           Center(
             child: setTitle(
-              title: widget.character.name!,
+              title: character.name!,
               fontSize: 25,
               fontColor: brightRed,
             ),
@@ -67,7 +51,7 @@ class _CharacterDetailsState extends State<CharacterDetails> {
             title: 'Description:',
           ),
           setData(
-            text: widget.character.description!,
+            text: character.description!,
             width: width,
           ),
           const Spacer(
@@ -76,11 +60,8 @@ class _CharacterDetailsState extends State<CharacterDetails> {
           setTitle(
             title: 'Abilities:',
           ),
-          setIconAbilities(),
-          const SizedBox(height: 6),
-          setAbilities(
-            title: selectedAbilityName,
-            description: selectedAbilityDescription,
+          CustomIconsAbilities(
+            abilities: character.abilities,
             width: width,
           ),
           const Spacer(),
@@ -98,40 +79,4 @@ class _CharacterDetailsState extends State<CharacterDetails> {
       ),
     );
   }
-
-  // TODO remove this and add custom_icon_button 
-  Widget setIconAbilities() {
-    final abilities = widget.character.abilities;
-    return SizedBox(
-      height: 30,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.character.abilities.length,
-        itemBuilder: (_, index) {
-          return InkWell(
-            onTap: () {
-              setState(() {
-                selectedAbilityName = abilities[index]['displayName'];
-                selectedAbilityDescription =  abilities[index]['description'];
-              });
-            },
-            child: Container(
-              color: selectedAbilityName == abilities[index]['displayName'] 
-                ? brightRed
-                : darkGray.withOpacity(0.4),
-              width: 40,
-              height: 30,
-              child: Image.network(
-                abilities[index]['displayIcon']!,
-                width: 30,
-                height: 30,
-              ),
-            ),
-          );
-        }  
-      ),
-    );
-  }
-  // _________________________________________________
 }
