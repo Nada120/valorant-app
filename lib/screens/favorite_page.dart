@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../logic/cubit/view_favorites_cubit.dart';
 import '../models/characters_model.dart';
 import '../logic/cubit/favorites_cubit.dart';
+import '../widget/favorite page/grid_favorite_characters.dart';
 import '../widget/favorite%20page/list_favorite_characters.dart';
 import '../widget/global/custom_loading.dart';
 import '../constant/colors.dart';
@@ -59,9 +60,10 @@ class FavoritePage extends StatelessWidget {
           body: BlocBuilder<FavoritesCubit, FavoritesState>(
             builder: (context, state) {
               if (state is CharacterFavoriteLoaded) {
-                // TODO here will change the view => view == 0? widget1(): widget2()
-                return ListFavoriteCharacters(
+                return view == 0? ListFavoriteCharacters(
                   favoriteCharacters: state.favoritesCharacters,
+                ): GridFavoriteCharacters(
+                  characters: state.favoritesCharacters
                 );
               } else if (state is NoCharacterFavorite) {
                 return Center(
