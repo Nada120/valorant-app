@@ -16,11 +16,10 @@ class Weapon {
   });
 
   factory Weapon.fromJSON(Map<String, dynamic> json) => Weapon(
-    name: json['displayName'],
-    category: json['category'],
-    urlImage: json['displayIcon'],
-    cost: json['shopData']['cost'],
-    weaponStats: WeaponStats.fromJSON(json['weaponStats']),
-  );
+        name: json['displayName'],
+        category: json['category'],
+        urlImage: json['displayIcon'],
+        cost: json['shopData'] != null ? json['shopData']['cost'] ?? 0 : 0,
+        weaponStats: WeaponStats.fromJSON(json['weaponStats']),
+      );
 }
-

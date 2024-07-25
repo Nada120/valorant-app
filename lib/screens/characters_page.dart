@@ -6,7 +6,6 @@ import '../widget/characters page/characters_page_body.dart';
 import '../widget/global/custom_loading.dart';
 import '../widget/global/show_error.dart';
 
-
 class CharactersPage extends StatelessWidget {
   const CharactersPage({super.key});
 
@@ -23,7 +22,11 @@ class CharactersPage extends StatelessWidget {
         } else {
           return CustomLoading(
             size: 20,
-            colors: [darkRed, teal, brightRed],
+            colors: [
+              darkRed,
+              teal,
+              brightRed,
+            ],
           );
         }
       },

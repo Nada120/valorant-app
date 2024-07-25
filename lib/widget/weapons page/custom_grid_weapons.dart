@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../constant/colors.dart';
-import '../../models/characters_model.dart';
-import 'character_details.dart';
+import '../../models/weapons_model.dart';
+import 'weapons_details.dart';
 
-class CharacterGirdView extends StatelessWidget {
-  final List<Character> characters;
-  final int index;
-
-  const CharacterGirdView({
+class CustomGridWeapons extends StatelessWidget {
+  final Weapon weapon;
+  const CustomGridWeapons({
     super.key,
-    required this.characters,
-    required this.index,
+    required this.weapon,
   });
 
   @override
@@ -19,7 +16,9 @@ class CharacterGirdView extends StatelessWidget {
       onTap: () {
         showBottomSheet(
           context: context,
-          builder: (_) => CharacterDetails(character: characters[index]),
+          builder: (_) => WeaponsDetails(
+            weapon: weapon,
+          ),
         );
       },
       child: Container(
@@ -43,7 +42,7 @@ class CharacterGirdView extends StatelessWidget {
           alignment: AlignmentDirectional.bottomCenter,
           children: [
             Image.network(
-              characters[index].fullPortrait!,
+              weapon.urlImage,
               height: 400,
             ),
             Container(
@@ -62,7 +61,7 @@ class CharacterGirdView extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  characters[index].name!,
+                  weapon.name,
                   style: const TextStyle(
                     fontFamily: 'gamerBold',
                     fontWeight: FontWeight.w500,

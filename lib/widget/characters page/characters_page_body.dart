@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../screens/weapons_page.dart';
 import '../characters%20page/characters_gird_body.dart';
 import '../../logic/cubit/tab_controller_cubit.dart';
 import '../../constant/colors.dart';
@@ -11,7 +12,7 @@ class CharactersPageBody extends StatelessWidget {
   final List<Character> characters;
 
   const CharactersPageBody({
-    super.key, 
+    super.key,
     required this.characters,
   });
 
@@ -22,6 +23,7 @@ class CharactersPageBody extends StatelessWidget {
         return DefaultTabController(
           length: 2,
           child: Scaffold(
+            backgroundColor: darkGray.withOpacity(0.95),
             appBar: customAppBar(context, characters),
             body: SingleChildScrollView(
               child: Column(
@@ -46,6 +48,7 @@ class CharactersPageBody extends StatelessWidget {
                         indicatorColor: brightRed,
                         labelColor: brightRed,
                         unselectedLabelColor: Colors.white,
+                        dividerColor: darkGray.withOpacity(0.95),
                         tabs: const [
                           Tab(
                             text: 'Charecters',
@@ -61,10 +64,7 @@ class CharactersPageBody extends StatelessWidget {
                   ),
                   pageIndex == 0
                       ? CharacterGirdBody(characters: characters)
-                      : // TODO HERE ADD PAGE 2
-                      const Center(
-                          child: Text('Page 2'),
-                        ),
+                      : const WeaponsPage()
                 ],
               ),
             ),

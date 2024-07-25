@@ -17,9 +17,7 @@ class CharacterDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
     return Container(
-      height: height * 0.6,
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         boxShadow: [
@@ -36,9 +34,7 @@ class CharacterDetails extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Spacer(
-            flex: 1,
-          ),
+          const SizedBox(height: 12),
           Center(
             child: setTitle(
               title: character.name!,
@@ -46,7 +42,7 @@ class CharacterDetails extends StatelessWidget {
               fontColor: brightRed,
             ),
           ),
-          const SizedBox(height: 2),  
+          const SizedBox(height: 2),
           setTitle(
             title: 'Description:',
           ),
@@ -66,10 +62,10 @@ class CharacterDetails extends StatelessWidget {
           ),
           const Spacer(),
           CustomButton(
-            text: 'BACK', 
+            text: 'BACK',
             textSize: 16,
-            backgroundColor: brightRed, 
-            icon: Icons.arrow_circle_left, 
+            backgroundColor: brightRed,
+            icon: Icons.arrow_circle_left,
             process: () => popPage(context),
           ),
           const Spacer(
